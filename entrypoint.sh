@@ -15,7 +15,6 @@ while IFS= read -r input; do
     output="/output/${input%.*}.$ext"
 
     if [ ! -f "$output" ]; then
-        echo "inside"
         mkdir -p "$(dirname "$output")"
         nice -n "$nice" ffmpeg -n -hide_banner -v info -i "$input" "$@" "$output" < /dev/null || true
         nice -n "$nice" exiftool -overwrite_original -TagsFromFile "$input" "-all:all>all:all" "$output" < /dev/null || true
