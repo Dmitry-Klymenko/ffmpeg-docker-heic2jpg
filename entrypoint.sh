@@ -9,7 +9,7 @@ cd /input
 
 find "./$path" -type f | egrep -i "$mask" | sort | cut -c 3- | while read input
 do
-	output="/output/${input%.*}.$ext"
+	output="/output/${input%.*}".$ext
 
 	if [ ! -f $output ]
 	then
